@@ -1,0 +1,88 @@
+﻿<Page
+    x:Class="ControlDemo.Views.RelativePanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ControlDemo.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" RequestedTheme="Dark">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="AboveState">
+                    <VisualState.Setters>
+                        <Setter Target="RedRectangle.(RelativePanel.AlignHorizontalCenterWith)" Value="BlueRectangle" />
+                        <Setter Target="RedRectangle.(RelativePanel.Above)" Value="BlueRectangle" />
+                        <Setter Target="GreenRectangle.(RelativePanel.AlignBottomWith)" Value="RedRectangle" />
+                        <Setter Target="GreenRectangle.(RelativePanel.LeftOf)" Value="RedRectangle" />
+                        <Setter Target="YellowRectangle.(RelativePanel.AlignBottomWith)" Value="GreenRectangle" />
+                        <Setter Target="YellowRectangle.(RelativePanel.RightOf)" Value="RedRectangle" />
+                        <Setter Target="PurpleRectangle.(RelativePanel.AlignBottomWith)" Value="YellowRectangle" />
+                        <Setter Target="PurpleRectangle.(RelativePanel.RightOf)" Value="YellowRectangle" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="RightState">
+                    <VisualState.Setters>
+                        <Setter Target="RedRectangle.(RelativePanel.AlignVerticalCenterWith)" Value="BlueRectangle" />
+                        <Setter Target="RedRectangle.(RelativePanel.RightOf)" Value="BlueRectangle" />
+                        <Setter Target="YellowRectangle.(RelativePanel.AlignBottomWith)" Value="RedRectangle" />
+                        <Setter Target="YellowRectangle.(RelativePanel.RightOf)" Value="RedRectangle" />
+                        <Setter Target="GreenRectangle.(RelativePanel.AlignTopWith)" Value="RedRectangle" />
+                        <Setter Target="GreenRectangle.(RelativePanel.RightOf)" Value="RedRectangle" />
+                        <Setter Target="PurpleRectangle.(RelativePanel.AlignBottomWith)" Value="YellowRectangle" />
+                        <Setter Target="PurpleRectangle.(RelativePanel.RightOf)" Value="YellowRectangle" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="BelowState">
+                    <VisualState.Setters>
+                        <Setter Target="RedRectangle.(RelativePanel.AlignHorizontalCenterWith)" Value="BlueRectangle" />
+                        <Setter Target="RedRectangle.(RelativePanel.Below)" Value="BlueRectangle" />
+                        <Setter Target="GreenRectangle.(RelativePanel.AlignTopWith)" Value="RedRectangle" />
+                        <Setter Target="GreenRectangle.(RelativePanel.LeftOf)" Value="RedRectangle" />
+                        <Setter Target="YellowRectangle.(RelativePanel.AlignTopWith)" Value="GreenRectangle" />
+                        <Setter Target="YellowRectangle.(RelativePanel.RightOf)" Value="RedRectangle" />
+                        <Setter Target="PurpleRectangle.(RelativePanel.AlignBottomWith)" Value="YellowRectangle" />
+                        <Setter Target="PurpleRectangle.(RelativePanel.RightOf)" Value="YellowRectangle" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="LeftState">
+                    <VisualState.Setters>
+                        <Setter Target="RedRectangle.(RelativePanel.AlignVerticalCenterWith)" Value="BlueRectangle" />
+                        <Setter Target="RedRectangle.(RelativePanel.LeftOf)" Value="BlueRectangle" />
+                        <Setter Target="YellowRectangle.(RelativePanel.AlignBottomWith)" Value="RedRectangle" />
+                        <Setter Target="YellowRectangle.(RelativePanel.LeftOf)" Value="RedRectangle" />
+                        <Setter Target="GreenRectangle.(RelativePanel.AlignTopWith)" Value="RedRectangle" />
+                        <Setter Target="GreenRectangle.(RelativePanel.LeftOf)" Value="RedRectangle" />
+                        <Setter Target="PurpleRectangle.(RelativePanel.AlignBottomWith)" Value="YellowRectangle" />
+                        <Setter Target="PurpleRectangle.(RelativePanel.LeftOf)" Value="YellowRectangle" />
+                        <Setter Target="PurpleRectangle.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <RelativePanel RenderTransformOrigin=".5,.5">
+            <RelativePanel.RenderTransform>
+                <ScaleTransform ScaleX="{Binding Value, ElementName=MyScale}"
+                                ScaleY="{Binding Value, ElementName=MyScale}"/>
+            </RelativePanel.RenderTransform>
+            <Ellipse Margin="10" Height="200" Width="200" Fill="Blue" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" x:Name="BlueRectangle" />
+            <Rectangle Margin="10" Height="200" Width="200" Fill="Red" x:Name="RedRectangle" />
+            <Rectangle Margin="10" Height="100" Width="100" Fill="Green" x:Name="GreenRectangle" />
+            <Rectangle Margin="10" Height="100" Width="100" Fill="Yellow" x:Name="YellowRectangle" />
+            <Rectangle Margin="10" Height="100" Width="100" Fill="Purple" x:Name="PurpleRectangle" />
+        </RelativePanel>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Horizontal">
+            <Button Margin="10" Content="Above" Tag="AboveState" Click="StateClick" />
+            <Button Margin="10" Content="Right" Tag="RightState" Click="StateClick" />
+            <Button Margin="10" Content="Below" Tag="BelowState" Click="StateClick" />
+            <Button Margin="10" Content="Left" Tag="LeftState" Click="StateClick" />
+        </StackPanel>
+
+        <Slider Minimum=".5" Maximum="1.5" Value="1" StepFrequency=".05" x:Name="MyScale" VerticalAlignment="Bottom" />
+
+    </Grid>
+</Page>

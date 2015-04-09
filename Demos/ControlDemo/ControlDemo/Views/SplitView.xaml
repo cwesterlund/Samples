@@ -1,0 +1,77 @@
+﻿<Page
+    x:Class="ControlDemo.Views.SplitView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ControlDemo.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <SplitView x:Name="splitView" PaneBackground="Gainsboro" IsPaneOpen="True" 
+               CompactPaneLength="40" OpenPaneLength="170" Margin="50" DisplayMode="CompactInline">
+        <SplitView.Content>
+            <Grid Background="Maroon" RequestedTheme="Dark">
+                <StackPanel VerticalAlignment="Top" Height="60" Background="Navy" Orientation="Horizontal">
+                    <Button x:Name="HomeburgerButton" Background="Green" Click="Show_Click" Height="60">Show</Button>
+                    <TextBlock Margin="10" FontSize="32">Page Header</TextBlock>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <StackPanel.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Margin" Value="5" />
+                        </Style>
+                    </StackPanel.Resources>
+                    <ToggleSwitch Header="SplitView.IsPaneOpen"  OnContent="Yes" OffContent="No" IsOn="{Binding IsPaneOpen, Mode=TwoWay, ElementName=splitView}" />
+                    <TextBlock Text="SplitView.PanePlacement" />
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Left" Click="PlacementLeft_Click" />
+                        <Button Content="Right" Click="PlacementRight_Click" />
+                    </StackPanel>
+                    <TextBlock Text="SplitView.PaneBackground" />
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Gainsboro" Click="BackgroundGainsboro_Click" />
+                        <Button Content="SteelBlue" Click="BackgroundSteelBlue_Click" />
+                    </StackPanel>
+                    <TextBlock Text="SplitView.DisplayMode" />
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Inline" Click="DisplayModeInline_Click" />
+                        <Button Content="Overlay" Click="DisplayModeOverlay_Click" />
+                        <Button Content="Compact" Click="DisplayModeCompactInline_Click" />
+                        <Button Content="CompactOverlay" Click="DisplayModeCompactOverlay_Click" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </SplitView.Content>
+        <SplitView.Pane>
+            <ListView RequestedTheme="Light">
+                <ListView.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontSize" Value="24" />
+                        <Setter Property="Margin" Value="5,0" />
+                    </Style>
+                </ListView.Resources>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>[x] Home</TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>[x] Favorites</TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>[x] Products</TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>[x] Services</TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>[x] Locations</TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>[x] Contact</TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>[x] Help</TextBlock>
+                </StackPanel>
+            </ListView>
+        </SplitView.Pane>
+    </SplitView>
+</Page>

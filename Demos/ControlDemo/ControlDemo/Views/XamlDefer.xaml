@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="ControlDemo.Views.XamlDefer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ControlDemo.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" RequestedTheme="Dark">
+        <Grid Width="1000" VerticalAlignment="Center">   
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="75" />
+                <ColumnDefinition Width="75" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="75" />
+                <ColumnDefinition Width="75" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75" />
+                <RowDefinition Height="75" />
+            </Grid.RowDefinitions>
+            <Rectangle x:DeferLoadStrategy="Lazy" Margin="10" Fill="Red" Grid.Column="0" Grid.Row="0" x:Name="NW" />
+            <Rectangle x:DeferLoadStrategy="Lazy" Margin="10" Fill="Green" Grid.Column="1" Grid.Row="0" x:Name="NE" />
+            <Rectangle x:DeferLoadStrategy="Lazy" Margin="10" Fill="Blue" Grid.Column="0" Grid.Row="1" x:Name="SW" />
+            <Rectangle x:DeferLoadStrategy="Lazy" Margin="10" Fill="Yellow" Grid.Column="1" Grid.Row="1" x:Name="SE" />
+            <TextBlock Grid.Column="2" Grid.RowSpan="2" Foreground="White" Margin="25,0" 
+                       VerticalAlignment="Center" FontSize="100" FontWeight="Light">Microsoft</TextBlock>
+            <Button Tag="NW" Click="RealizeElement" Grid.Column="3" Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10" BorderBrush="Red" Foreground="White">Go</Button>
+            <Button Tag="NE" Click="RealizeElement" Grid.Column="4" Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10" BorderBrush="Green" Foreground="White">Go</Button>
+            <Button Tag="SW" Click="RealizeElement" Grid.Column="3" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10" BorderBrush="Blue" Foreground="White">Go</Button>
+            <Button Tag="SE" Click="RealizeElement" Grid.Column="4" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10" BorderBrush="Yellow" Foreground="White">Go</Button>
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="ControlDemo.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ControlDemo.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <SplitView OpenPaneLength="130" PanePlacement="Left" DisplayMode="Inline" IsPaneOpen="True">
+            <SplitView.Pane>
+                <ListView Background="Purple">
+                    <Button Height="75" Width="100" Background="PaleGoldenrod" Click="RelativePanelClick">
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" TextWrapping="Wrap" TextAlignment="Center">Relative Panel</TextBlock>
+                    </Button>
+                    <Button Height="75" Width="100" Background="PaleGoldenrod" Click="SplitViewClick">
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" TextWrapping="Wrap" TextAlignment="Center">Split View</TextBlock>
+                    </Button>
+                    <Button Height="75" Width="100" Background="PaleGoldenrod" Click="PivotClick">
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" TextWrapping="Wrap" TextAlignment="Center">Pivot Control</TextBlock>
+                    </Button>
+                    <Button Height="75" Width="100" Background="PaleGoldenrod" Click="Transform3dClick">
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" TextWrapping="Wrap" TextAlignment="Center">Transform 3D</TextBlock>
+                    </Button>
+                    <Button Height="75" Width="100" Background="PaleGoldenrod" Click="DeferredClick">
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" TextWrapping="Wrap" TextAlignment="Center">Deferred Element</TextBlock>
+                    </Button>
+                    <Button Height="75" Width="100" Background="PaleGoldenrod" Click="MenuFlyoutClick">
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" TextWrapping="Wrap" TextAlignment="Center">Menu Flyout</TextBlock>
+                    </Button>
+                    <Button Height="75" Width="100" Background="PaleGoldenrod" Click="ExitClick">
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" TextWrapping="Wrap" TextAlignment="Center">Exit</TextBlock>
+                    </Button>
+                </ListView>
+            </SplitView.Pane>
+            <Frame x:Name="NestedFrame" />
+        </SplitView>
+    </Grid>
+</Page>
